@@ -1,36 +1,54 @@
 #include "DictString.h"
 
-typedef DictString ds;
+typedef DictString DS;
 
-ds::dict_container ds::dict;
-ds::dict_inverseContainer ds::inverseDict;
+DS::dict_container DS::dict;
 
-ds::dict_index ds::findIndex(const string& str) {
-  auto myWord = dict.find(str);
-  if (myWord != dict.end()) return myWord->second;
-  dict_index result = inverseDict.size();
-  dict.insert(std::make_pair(str, result));
-  inverseDict.push_back(str);
-  return result;
+const DS::dict_index& DS::findIndex(const string& str) {
+  const auto& myWord = dict.find(str);
+  if (myWord != dict.end()) return myWord;
+  // New word in dictionary
+  auto newEntry = std::make_pair(str, nullptr);
+  const DS::dict_index& insertedIterator = dict.insert(newEntry).first;
+  return insertedIterator;
 }
+
 // findString for my index
-const ds::string& ds::findString(dict_index i) {
-  return inverseDict.at(i);
+const DS::string& DS::findString(const dict_index& i) {
+  return i->first;
 }
 
-ds::string ds::str() {
+DS::string DS::str() {
   return findString(m_index);
 }
 
-ds::dict_index ds::index() {
+const DS::dict_index& DS::index() {
   return m_index;
 }
 
-// Assignment operators (more or less)
-ds& ds::operator= (const char* s) {
+// Assignment and constructor operators with char*
+DS::DictString(const char* s) {
+  m_index = findIndex(string(s));
+}
+DS& DS::operator= (const char* s) {
   m_index = findIndex(string(s));
 }
 
+// Assignment and constructor operators with std::string
+DS::DictString(const std::string& s) {
+  m_index = findIndex(s);
+}
+DS& DS::operator= (const std::string& s) {
+  m_index = findIndex(s);
+}
+
+bool operator==(const DictString& lhs, const DictString& rhs) {
+  return lhs.m_index == rhs.m_index;
+}
+
+bool operator!=(const DictString& lhs, const DictString& rhs) {
+  return lhs.m_index != rhs.m_index;
+}
 
 // int findString(const CharT* s) {
 //   std::string str = std::string(s);
@@ -51,18 +69,18 @@ ds& ds::operator= (const char* s) {
 //    return dictionary[str];
 //  }
 //
-//  // Operators for ds
-//  ds& operator=(const basic_string& str) {
+//  // Operators for DS
+//  DS& operator=(const basic_string& str) {
 //    index = findString(str);
 //  }
-//  ds& operator=(const ds& str) {
+//  DS& operator=(const DS& str) {
 //    index = str.index;
 //  }
 
-//  ds& operator=(CharT ch) {
+//  DS& operator=(CharT ch) {
 //    index =
 //  }
-//  ds& operator=(std::initializer_list<CharT> ilist) {
+//  DS& operator=(std::initializer_list<CharT> ilist) {
 //    index = findString(ilist);
 //  }
 //

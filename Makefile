@@ -14,7 +14,7 @@ directories:
 	g++ -fmax-errors=2 --std=c++11 -c $< -o $@
 
 $(BINDIR)/testDictString: testDictString.cpp DictString.o
-	g++ -fmax-errors=2 --std=c++11 DictString.o $< -o $@
+	g++ -O0 -fmax-errors=2 --std=c++11 DictString.o $< -o $@
 
 clean:
 	rm -f *.o $(BINS)

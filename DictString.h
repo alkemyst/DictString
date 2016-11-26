@@ -13,58 +13,30 @@ class DictString {
 
 private:
   typedef std::string string;
-  typedef unsigned int dict_index;
-  typedef __gnu_pbds::trie< string, dict_index> dict_container;
-  typedef std::vector< string > dict_inverseContainer;
+  typedef __gnu_pbds::trie< string, nullptr_t> dict_container;
+  typedef dict_container::iterator dict_index;
   static dict_container dict;
-  static dict_inverseContainer inverseDict;
-  dict_index m_index;
   // findIndex for my string
-  static dict_index findIndex(const string& str);
+  static const dict_index& findIndex(const string& str);
   // findString for my index
-  static const string& findString(dict_index i);
-
+  static const string& findString(const dict_index& i);
+protected:
+  dict_index m_index;
 public:
+  DictString() {};
+  DictString(const char* s);
+  DictString(const string& s);
   string str();
-  dict_index index();
+  const dict_index& index();
+  static size_t size() { return dict.size() ;}
 
   // Assignment operators (more or less)
   DictString& operator= (const char* s);
+  DictString& operator= (const std::string& s);
 
-  // int findString(const CharT* s) {
-  //   std::string str = std::string(s);
-  //   return dictionary[s];
-  // }
-  //  int findString(CharT ch) {
-  //    std::string str = std::string(s);
-  //    return dictionary[s];
-  //  }
-
-
-  //  template <typename T> int findString(const T s) {
-  //    std::string str = std::string(s);
-  //    return dictionary[str];
-  //  }
-  //  template <typename T> int findString(const T& s) {
-  //    std::string str = std::string(s);
-  //    return dictionary[str];
-  //  }
-  //
-  //  // Operators for DictString
-  //  DictString& operator=(const basic_string& str) {
-  //    index = findString(str);
-  //  }
-  //  DictString& operator=(const DictString& str) {
-  //    index = str.index;
-  //  }
-
-  //  DictString& operator=(CharT ch) {
-  //    index =
-  //  }
-  //  DictString& operator=(std::initializer_list<CharT> ilist) {
-  //    index = findString(ilist);
-  //  }
-  //
+  // Comparison operators <- here's the real gain :-)
+  friend bool operator==(const DictString& lhs, const DictString& rhs);
+  friend bool operator!=(const DictString& lhs, const DictString& rhs);
 };
 
 #endif /* INCLUDE_DICTSTRING_H */
