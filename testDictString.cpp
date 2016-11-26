@@ -8,7 +8,7 @@ void report_duration_us(const std::chrono::high_resolution_clock::time_point& t0
                         const std::chrono::high_resolution_clock::time_point& t1) {
   using namespace std::chrono;
   auto duration = duration_cast<microseconds>(t1-t0).count();
-  std::cout << "Duration was " << duration << " us" << std::endl;
+  std::cout << duration << " us" << std::endl;
 }
 
 int main() {
@@ -22,14 +22,16 @@ int main() {
       // std::cout << aDictString.str() << std::endl;
     }
   }
-  std::cout << "Dictionary size is " << DictString::size() << std::endl;
-  std::cout << "Please type an English word : ";
+  std::cerr << "Dictionary size is " << DictString::size() << std::endl;
+  std::cerr << "Please type an English word : ";
   std::cin >> myLine;
   DictString aDictString1 = myLine;
-  std::cout << "Please type another English word : ";
+  std::cerr << "Word '"<< aDictString1.str()<<"' is word #" << aDictString1.index() << std::endl;
+  std::cerr << "Please type another English word : ";
   std::cin >> myLine;
   DictString aDictString2 = myLine;
-  std::cout << "Dictionary size is now " << DictString::size() << std::endl;
+  std::cerr << "Word '"<< aDictString2.str()<<"' is word #" << aDictString2.index() << std::endl;
+  std::cerr << "Dictionary size is now " << DictString::size() << std::endl;
 
   // Let's do some performance test
   {
@@ -40,13 +42,13 @@ int main() {
     aDictString1 = aString1;
     aDictString2 = aString2;
     high_resolution_clock::time_point t0, t1;
-    std::cout << "Empty loop: ";
+    std::cout << "Empty ";
     t0 = high_resolution_clock::now();
     for (int i=0; i<nLoops; ++i);
     t1 = high_resolution_clock::now();
     report_duration_us(t0, t1);
 
-    std::cout << "DictString comparison loop: ";
+    std::cout << "DictString ";
     t0 = high_resolution_clock::now();
     for (int i=0; i<nLoops; ++i) {
       if (aDictString1==aDictString2) {
@@ -56,7 +58,7 @@ int main() {
     t1 = high_resolution_clock::now();
     report_duration_us(t0, t1);
 
-    std::cout << "string comparison loop: ";
+    std::cout << "string ";
     t0 = high_resolution_clock::now();
     for (int i=0; i<nLoops; ++i) {
       if (aString1==aString2) {
@@ -66,7 +68,7 @@ int main() {
     t1 = high_resolution_clock::now();
     report_duration_us(t0, t1);
 
-    std::cout << "integer comparison loop: ";
+    std::cout << "integer ";
     int n1=45;
     int n2=33;
     t0 = high_resolution_clock::now();

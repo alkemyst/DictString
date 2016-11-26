@@ -13,15 +13,17 @@ class DictString {
 
 private:
   typedef std::string string;
-  typedef __gnu_pbds::trie< string, nullptr_t> dict_container;
-  typedef dict_container::iterator dict_index;
+  typedef size_t dict_index;
+  typedef __gnu_pbds::trie< string, dict_index> dict_container;
+  typedef dict_container::iterator dict_iterator;
   static dict_container dict;
   // findIndex for my string
-  static const dict_index& findIndex(const string& str);
+  static const dict_iterator& findIterator(const string&);
   // findString for my index
-  static const string& findString(const dict_index& i);
+  static const string& findString(const dict_iterator& i);
 protected:
   dict_index m_index;
+  dict_iterator m_iterator;
 public:
   DictString() {};
   DictString(const char* s);

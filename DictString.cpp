@@ -4,22 +4,22 @@ typedef DictString DS;
 
 DS::dict_container DS::dict;
 
-const DS::dict_index& DS::findIndex(const string& str) {
+const DS::dict_iterator& DS::findIterator(const string& str) {
   const auto& myWord = dict.find(str);
   if (myWord != dict.end()) return myWord;
   // New word in dictionary
-  auto newEntry = std::make_pair(str, nullptr);
-  const DS::dict_index& insertedIterator = dict.insert(newEntry).first;
+  auto newEntry = std::make_pair(str, dict.size());
+  const DS::dict_iterator& insertedIterator = dict.insert(newEntry).first;
   return insertedIterator;
 }
 
 // findString for my index
-const DS::string& DS::findString(const dict_index& i) {
+const DS::string& DS::findString(const dict_iterator& i) {
   return i->first;
 }
 
 DS::string DS::str() {
-  return findString(m_index);
+  return findString(m_iterator);
 }
 
 const DS::dict_index& DS::index() {
@@ -28,18 +28,22 @@ const DS::dict_index& DS::index() {
 
 // Assignment and constructor operators with char*
 DS::DictString(const char* s) {
-  m_index = findIndex(string(s));
+  m_iterator = findIterator(string(s));
+  m_index = m_iterator->second;
 }
 DS& DS::operator= (const char* s) {
-  m_index = findIndex(string(s));
+  m_iterator = findIterator(string(s));
+  m_index = m_iterator->second;
 }
 
 // Assignment and constructor operators with std::string
 DS::DictString(const std::string& s) {
-  m_index = findIndex(s);
+  m_iterator = findIterator(s);
+  m_index = m_iterator->second;
 }
 DS& DS::operator= (const std::string& s) {
-  m_index = findIndex(s);
+  m_iterator = findIterator(s);
+  m_index = m_iterator->second;
 }
 
 bool operator==(const DictString& lhs, const DictString& rhs) {
