@@ -1,8 +1,7 @@
 BINDIR=bin
-BINS+=$(BINDIR)/testDictString
+BINS+=$(BINDIR)/test
 
 .PHONY: directories
-
 
 all: $(BINS) directories
 
@@ -13,7 +12,7 @@ directories:
 %.o: %.cpp %.h
 	g++ -fmax-errors=2 --std=c++11 -c $< -o $@
 
-$(BINDIR)/testDictString: testDictString.cpp DictString.o
+$(BINS) : $(BINDIR)/%: %.cpp DictString.o
 	g++ -O0 -fmax-errors=2 --std=c++11 DictString.o $< -o $@
 
 clean:

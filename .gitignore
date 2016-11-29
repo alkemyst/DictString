@@ -1,5 +1,6 @@
 # Output directory
 bin/*
+testing/*
 
 # Compiled Object files
 *.slo
