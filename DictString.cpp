@@ -68,7 +68,7 @@ bool operator<= (const DictString& lhs, const DictString& rhs) {
   return lhs.m_index <= rhs.m_index;
 }
 
-bool operator>  (const DictString& lhs, const DictString& rhs) {
+bool operator> (const DictString& lhs, const DictString& rhs) {
   return lhs.m_index > rhs.m_index;
 }
 
@@ -76,31 +76,31 @@ bool operator>= (const DictString& lhs, const DictString& rhs) {
   return lhs.m_index >= rhs.m_index;
 }
 
-DictString operator+ (const DictString& lhs, const DictString& rhs){
+DictString operator+ (const DictString& lhs, const DictString& rhs) {
   return DictString(lhs.str()+rhs.str());
 }
 
-DictString operator+ (const DictString& lhs, const DS::string& rhs){
+DictString operator+ (const DictString& lhs, const DS::string& rhs) {
   return DictString(lhs.str()+rhs);
 }
 
-DictString operator+ (const DictString& lhs, const char*   rhs){
+DictString operator+ (const DictString& lhs, const char*   rhs) {
   return DictString(lhs.str()+rhs);
 }
 
-DictString operator+ (const DictString& lhs, const char    rhs){
+DictString operator+ (const DictString& lhs, const char    rhs) {
   return DictString(lhs.str()+rhs);
 }
 
-DictString operator+ (const DS::string&     lhs, const DictString& rhs){
+DictString operator+ (const DS::string&     lhs, const DictString& rhs) {
   return DictString(lhs+rhs.str());
 }
 
-DictString operator+ (const char*       lhs, const DictString& rhs){
+DictString operator+ (const char*       lhs, const DictString& rhs) {
   return DictString(lhs+rhs.str());
 }
 
-DictString operator+ (char              lhs, const DictString& rhs){
+DictString operator+ (char              lhs, const DictString& rhs) {
   std::string lhs_string;
   lhs_string = lhs;
   return DictString(lhs_string+rhs.str());

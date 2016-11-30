@@ -42,9 +42,9 @@ public:
   // Comparison operators <- here's the real gain :-)
   friend bool operator== (const DictString& lhs, const DictString& rhs);
   friend bool operator!= (const DictString& lhs, const DictString& rhs);
-  friend bool operator<  (const DictString& lhs, const DictString& rhs);
+  friend bool operator< (const DictString& lhs, const DictString& rhs);
   friend bool operator<= (const DictString& lhs, const DictString& rhs);
-  friend bool operator>  (const DictString& lhs, const DictString& rhs);
+  friend bool operator> (const DictString& lhs, const DictString& rhs);
   friend bool operator>= (const DictString& lhs, const DictString& rhs);
 
   // Sum operators

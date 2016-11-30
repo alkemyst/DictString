@@ -40,14 +40,14 @@ int main(int argc, char* argv[]) {
   cout << ds2.str() << " : " << ds2.index() << endl;
   ds2 = ds2 + std::string("l");
   cout << ds2.str() << " : " << ds2.index() << endl;
-  ds2 = ds2 + ds0; 
+  ds2 = ds2 + ds0;
   cout << ds2.str() << " : " << ds2.index() << endl;
 
   DictString ds3;
   ds3 = '0' + ds3;
   ds3 = "1" + ds3;
   ds3 = std::string("2") + ds3;
-  ds3 = ds3 + ds3; 
+  ds3 = ds3 + ds3;
   cout << ds3.str() << " : " << ds3.index() << endl;
 
   return 0;
