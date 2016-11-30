@@ -60,6 +60,10 @@ public:
   friend DictString operator+ (const char*       lhs, const DictString& rhs);
   friend DictString operator+ (char              lhs, const DictString& rhs);
 
+  // shift operators
+  friend std::ostream& operator<< (std::ostream& os, const DictString& ds);
+  friend std::istream& operator>> (std::istream& is, DictString& ds);
+
   // Sum and assign
   template<typename T> DictString& operator+= (const T& rhs) {
     (*this) = (*this) + rhs;

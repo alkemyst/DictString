@@ -60,5 +60,9 @@ int main(int argc, char* argv[]) {
   ds4 = ds4.substr(2);
   testString(ds4);
 
+  cout << "Type a word here: ";
+  cin >> ds4;
+  cout << "Your word was: " << ds4 << endl;
+
   return 0;
 }

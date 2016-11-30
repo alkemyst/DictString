@@ -98,6 +98,16 @@ DictString operator+ (char              lhs, const DictString& rhs) {
   return DictString(lhs_string+rhs.str());
 }
 
+std::ostream& operator<< (std::ostream& os, const DictString& ds) {
+  os << ds.str();
+}
+
+std::istream& operator>> (std::istream& is, DictString& ds) {
+  DS::string temp;
+  is >> temp;
+  ds = temp;
+}
+
 DictString DictString::substr (size_t pos, size_t len) const {
   return DictString(str().substr(pos, len));
 }
