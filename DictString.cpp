@@ -19,14 +19,6 @@ const DS::string& DS::findString(const dict_iterator& i) {
   return i->first;
 }
 
-const DS::string& DS::str() const {
-  return findString(m_iterator);
-}
-
-const DS::dict_index& DS::index() {
-  return m_index;
-}
-
 // Default constructor
 DS::DictString() {
   (*this) = emptyDictString;

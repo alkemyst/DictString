@@ -26,16 +26,26 @@ protected:
   dict_index m_index;
   dict_iterator m_iterator;
 public:
+  // Static (dictionary) functions
+  static size_t dictSize() {
+    return dict.size() ;
+  }
+
+  // Object functions
   DictString();
   DictString(const char* s);
   DictString(const string& s);
-  const string& str() const;
-  const dict_index& index();
-  static size_t size() {
-    return dict.size() ;
+  dict_index index() const {
+    return m_index;
   }
-  size_t length() {
+  const string& str() const {
+    return findString(m_iterator);
+  }
+  size_t length() const {
     return str().length();
+  }
+  const char* c_str() const {
+    return str().c_str();
   }
 
   // Assignment operators (more or less)
