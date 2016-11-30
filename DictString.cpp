@@ -60,37 +60,36 @@ bool operator!=(const DictString& lhs, const DictString& rhs) {
   return lhs.m_index != rhs.m_index;
 }
 
-// int findString(const CharT* s) {
-//   std::string str = std::string(s);
-//   return dictionary[s];
-// }
-//  int findString(CharT ch) {
-//    std::string str = std::string(s);
-//    return dictionary[s];
-//  }
+bool operator<(const DictString& lhs, const DictString& rhs) {
+  return lhs.m_index < rhs.m_index;
+}
 
+DictString operator+ (const DictString& lhs, const DictString& rhs){
+  return DictString(lhs.str()+rhs.str());
+}
 
-//  template <typename T> int findString(const T s) {
-//    std::string str = std::string(s);
-//    return dictionary[str];
-//  }
-//  template <typename T> int findString(const T& s) {
-//    std::string str = std::string(s);
-//    return dictionary[str];
-//  }
-//
-//  // Operators for DS
-//  DS& operator=(const basic_string& str) {
-//    index = findString(str);
-//  }
-//  DS& operator=(const DS& str) {
-//    index = str.index;
-//  }
+DictString operator+ (const DictString& lhs, const DS::string& rhs){
+  return DictString(lhs.str()+rhs);
+}
 
-//  DS& operator=(CharT ch) {
-//    index =
-//  }
-//  DS& operator=(std::initializer_list<CharT> ilist) {
-//    index = findString(ilist);
-//  }
-//
+DictString operator+ (const DictString& lhs, const char*   rhs){
+  return DictString(lhs.str()+rhs);
+}
+
+DictString operator+ (const DictString& lhs, const char    rhs){
+  return DictString(lhs.str()+rhs);
+}
+
+DictString operator+ (const DS::string&     lhs, const DictString& rhs){
+  return DictString(lhs+rhs.str());
+}
+
+DictString operator+ (const char*       lhs, const DictString& rhs){
+  return DictString(lhs+rhs.str());
+}
+
+DictString operator+ (char              lhs, const DictString& rhs){
+  std::string lhs_string;
+  lhs_string = lhs;
+  return DictString(lhs_string+rhs.str());
+}

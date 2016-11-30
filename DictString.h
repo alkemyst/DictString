@@ -40,8 +40,19 @@ public:
   DictString& operator= (const std::string& s);
 
   // Comparison operators <- here's the real gain :-)
-  friend bool operator==(const DictString& lhs, const DictString& rhs);
-  friend bool operator!=(const DictString& lhs, const DictString& rhs);
+  friend bool operator== (const DictString& lhs, const DictString& rhs);
+  friend bool operator!= (const DictString& lhs, const DictString& rhs);
+  friend bool operator< (const DictString& lhs, const DictString& rhs);
+
+  // Sum operators
+  friend DictString operator+ (const DictString& lhs, const DictString& rhs);
+  friend DictString operator+ (const DictString& lhs, const string& rhs);
+  friend DictString operator+ (const DictString& lhs, const char*   rhs);
+  friend DictString operator+ (const DictString& lhs, const char    rhs);
+  friend DictString operator+ (const string&     lhs, const DictString& rhs);
+  friend DictString operator+ (const char*       lhs, const DictString& rhs);
+  friend DictString operator+ (char              lhs, const DictString& rhs);
+
 };
 
 #endif /* INCLUDE_DICTSTRING_H */
