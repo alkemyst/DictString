@@ -29,7 +29,7 @@ public:
   DictString();
   DictString(const char* s);
   DictString(const string& s);
-  string str();
+  const string& str() const;
   const dict_index& index();
   static size_t size() { return dict.size() ;}
 

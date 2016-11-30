@@ -19,7 +19,7 @@ const DS::string& DS::findString(const dict_iterator& i) {
   return i->first;
 }
 
-DS::string DS::str() {
+const DS::string& DS::str() const {
   return findString(m_iterator);
 }
 
