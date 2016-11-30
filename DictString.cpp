@@ -64,6 +64,18 @@ bool operator<(const DictString& lhs, const DictString& rhs) {
   return lhs.m_index < rhs.m_index;
 }
 
+bool operator<= (const DictString& lhs, const DictString& rhs) {
+  return lhs.m_index <= rhs.m_index;
+}
+
+bool operator>  (const DictString& lhs, const DictString& rhs) {
+  return lhs.m_index > rhs.m_index;
+}
+
+bool operator>= (const DictString& lhs, const DictString& rhs) {
+  return lhs.m_index >= rhs.m_index;
+}
+
 DictString operator+ (const DictString& lhs, const DictString& rhs){
   return DictString(lhs.str()+rhs.str());
 }
