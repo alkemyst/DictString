@@ -31,7 +31,9 @@ public:
   DictString(const string& s);
   const string& str() const;
   const dict_index& index();
-  static size_t size() { return dict.size() ;}
+  static size_t size() {
+    return dict.size() ;
+  }
 
   // Assignment operators (more or less)
   DictString& operator= (const char* s);

@@ -47,7 +47,7 @@ DS::DictString(const std::string& s) {
   m_iterator = findIterator(s);
   m_index = m_iterator->second;
 }
-DS& DS::operator= (const std::string& s) {
+DS& DS::operator=(const std::string& s) {
   m_iterator = findIterator(s);
   m_index = m_iterator->second;
 }
