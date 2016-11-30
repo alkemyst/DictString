@@ -98,3 +98,7 @@ DictString operator+ (char              lhs, const DictString& rhs) {
   return DictString(lhs_string+rhs.str());
 }
 
+DictString DictString::substr (size_t pos, size_t len) const {
+  return DictString(str().substr(pos, len));
+}
+

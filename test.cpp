@@ -56,5 +56,9 @@ int main(int argc, char* argv[]) {
   ds3 = ds3 + ds3;
   testString(ds3);
 
+  DictString ds4 = "012345";
+  ds4 = ds4.substr(2);
+  testString(ds4);
+
   return 0;
 }

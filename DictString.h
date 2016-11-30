@@ -38,15 +38,6 @@ public:
   dict_index index() const {
     return m_index;
   }
-  const string& str() const {
-    return findString(m_iterator);
-  }
-  size_t length() const {
-    return str().length();
-  }
-  const char* c_str() const {
-    return str().c_str();
-  }
 
   // Assignment operators (more or less)
   DictString& operator= (const char* s);
@@ -69,10 +60,22 @@ public:
   friend DictString operator+ (const char*       lhs, const DictString& rhs);
   friend DictString operator+ (char              lhs, const DictString& rhs);
 
-  // Sum ad assign
+  // Sum and assign
   template<typename T> DictString& operator+= (const T& rhs) {
     (*this) = (*this) + rhs;
   }
+
+  // std::string interface cloning
+  const string& str() const {
+    return findString(m_iterator);
+  }
+  size_t length() const {
+    return str().length();
+  }
+  const char* c_str() const {
+    return str().c_str();
+  }
+  DictString substr (size_t pos = 0, size_t len = string::npos) const;
 
 };
 
