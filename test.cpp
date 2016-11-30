@@ -24,8 +24,8 @@ int main(int argc, char* argv[]) {
   cout << "Dictionary size is " << DictString::size() << endl;
 
   DictString ds0, ds1, ds2;
-  ds0 = "Hello, world0";
-  ds1 = "Hello, world0";
+  ds0 = "aString";
+  ds1 = "aString";
   ds2 = "hello";
   cout << ds0.str() << " : " << ds0.index() << endl;
   cout << ds1.str() << " : " << ds1.index() << endl;
@@ -34,13 +34,13 @@ int main(int argc, char* argv[]) {
   if (en_dict[ds2]==ds2.index()) cout << " yes!";
   else cout << " no!";
   cout << endl;
-  ds2 = ds2 + 'k';
+  ds2 += '0';
   cout << ds2.str() << " : " << ds2.index() << endl;
-  ds2 = ds2 + "j";
+  ds2 += "1";
   cout << ds2.str() << " : " << ds2.index() << endl;
-  ds2 = ds2 + std::string("l");
+  ds2 += std::string("2");
   cout << ds2.str() << " : " << ds2.index() << endl;
-  ds2 = ds2 + ds0;
+  ds2 += ds0;
   cout << ds2.str() << " : " << ds2.index() << endl;
 
   DictString ds3;

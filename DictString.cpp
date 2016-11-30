@@ -105,3 +105,4 @@ DictString operator+ (char              lhs, const DictString& rhs) {
   lhs_string = lhs;
   return DictString(lhs_string+rhs.str());
 }
+

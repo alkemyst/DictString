@@ -56,6 +56,11 @@ public:
   friend DictString operator+ (const char*       lhs, const DictString& rhs);
   friend DictString operator+ (char              lhs, const DictString& rhs);
 
+  // Sum ad assign
+  template<typename T> DictString& operator+= (const T& rhs) {
+    (*this) = (*this) + rhs;
+  }
+
 };
 
 #endif /* INCLUDE_DICTSTRING_H */
