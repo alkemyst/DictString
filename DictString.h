@@ -21,11 +21,12 @@ private:
   static const dict_iterator& findIterator(const string&);
   // findString for my index
   static const string& findString(const dict_iterator& i);
+  static const DictString emptyDictString;
 protected:
   dict_index m_index;
   dict_iterator m_iterator;
 public:
-  DictString() {};
+  DictString();
   DictString(const char* s);
   DictString(const string& s);
   string str();

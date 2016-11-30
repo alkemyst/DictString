@@ -3,6 +3,7 @@
 typedef DictString DS;
 
 DS::dict_container DS::dict;
+const DictString DS::emptyDictString("");
 
 const DS::dict_iterator& DS::findIterator(const string& str) {
   const auto& myWord = dict.find(str);
@@ -24,6 +25,11 @@ DS::string DS::str() {
 
 const DS::dict_index& DS::index() {
   return m_index;
+}
+
+// Default constructor
+DS::DictString() {
+  (*this) = emptyDictString;
 }
 
 // Assignment and constructor operators with char*
