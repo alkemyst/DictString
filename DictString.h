@@ -34,6 +34,9 @@ public:
   static size_t size() {
     return dict.size() ;
   }
+  size_t length() {
+    return str().length();
+  }
 
   // Assignment operators (more or less)
   DictString& operator= (const char* s);

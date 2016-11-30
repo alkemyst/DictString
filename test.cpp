@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
   ds2 += std::string("2");
   cout << ds2.str() << " : " << ds2.index() << endl;
   ds2 += ds0;
-  cout << ds2.str() << " : " << ds2.index() << endl;
+  cout << ds2.str() << " : " << ds2.index() << "string length is " << ds2.length() << endl;
 
   DictString ds3;
   ds3 = '0' + ds3;
